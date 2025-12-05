@@ -1,0 +1,2479 @@
+<html lang="zh-CN" class="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致衡 - TheBottleneck</title>
+    <link rel="icon" type="image/svg+xml" href="logo.svg">
+    <link rel="alternate icon" href="logo.svg">
+    <script async="" src="https://scripts.clarity.ms/0.8.41/clarity.js"></script>
+    <script async="" src="https://www.clarity.ms/tag/u4gu9918az"></script>
+    <script>
+        // 首屏预加载阶段关闭全局动画/过渡，避免“旧样式→新样式”视觉跳变
+        try { document.documentElement.classList.add('preload'); } catch (e) { }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Noto+Sans+SC:wght@400;500;600;700&amp;display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="color-picker.css">
+
+    <!-- Microsoft Clarity -->
+    <script type="text/javascript">
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "u4gu9918az");
+    </script>
+    <link type="text/css" rel="stylesheet" id="dark-mode-custom-link">
+    <link type="text/css" rel="stylesheet" id="dark-mode-general-link">
+    <style lang="en" type="text/css" id="dark-mode-custom-style"></style>
+    <style lang="en" type="text/css" id="dark-mode-native-style"></style>
+    <style lang="en" type="text/css" id="dark-mode-native-sheet"></style>
+    <style id="_goober">
+        @keyframes go2264125279 {
+            from {
+                transform: scale(0) rotate(45deg);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) rotate(45deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes go3020080000 {
+            from {
+                transform: scale(0);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes go463499852 {
+            from {
+                transform: scale(0) rotate(90deg);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) rotate(90deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes go1268368563 {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes go1310225428 {
+            from {
+                transform: scale(0) rotate(45deg);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1) rotate(45deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes go651618207 {
+            0% {
+                height: 0;
+                width: 0;
+                opacity: 0;
+            }
+
+            40% {
+                height: 0;
+                width: 6px;
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 1;
+                height: 10px;
+            }
+        }
+
+        @keyframes go901347462 {
+            from {
+                transform: scale(0.6);
+                opacity: 0.4;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .go4109123758 {
+            z-index: 9999;
+        }
+
+        .go4109123758>* {
+            pointer-events: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="heroCanvas" width="1119" height="858"></canvas>
+
+    <!-- 装饰性背景元素 -->
+    <div class="decorative-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
+    </div>
+
+    <div class="container">
+        <header data-parallax="layer1" style="transform: translate3d(-2.2681px, -30.014px, 0px);">
+            <div class="logo-container">
+                <img src="logo.svg" alt="致衡 Logo" class="logo">
+                <h1>致衡</h1>
+            </div>
+            <p class="subtitle">认知域能力测试 · Cognitive Domain Assessment</p>
+            <div class="header-decoration">
+                <div class="decoration-line"></div>
+                <div class="decoration-dot"></div>
+                <div class="decoration-line"></div>
+            </div>
+        </header>
+
+        <!-- 登录区域 -->
+        <div id="loginArea" style="display: none;">
+            <login-area><template shadowrootmode="open">
+                    <style>
+                        :host {
+                            display: block;
+                        }
+
+                        /* 玻璃拟态登录卡片：与首页 .card 保持一致并加分层高光 */
+                        .login-card.card {
+                            background: rgba(255, 255, 255, 0.92);
+                            backdrop-filter: blur(14px);
+                            -webkit-backdrop-filter: blur(14px);
+                            border: 1px solid rgba(255, 255, 255, 0.28);
+                            border-radius: 24px;
+                            padding: 2.5rem;
+                            margin: 0 auto;
+                            max-width: 520px;
+                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+                            text-align: center;
+                            position: relative;
+                            overflow: hidden;
+                            will-change: transform;
+                            transform: translateZ(0);
+                        }
+
+                        .login-card.card::before,
+                        .login-card.card::after {
+                            content: '';
+                            position: absolute;
+                            left: -20%;
+                            width: 140%;
+                            height: 120px;
+                            pointer-events: none;
+                            transition: opacity .3s ease;
+                        }
+
+                        .login-card.card::before {
+                            top: -60px;
+                            background: radial-gradient(120px 40px at 20% 100%, rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0));
+                            opacity: .6;
+                        }
+
+                        .login-card.card::after {
+                            bottom: -60px;
+                            background: radial-gradient(180px 60px at 80% 0%, rgba(10, 126, 164, 0.15), rgba(19, 196, 163, 0));
+                            opacity: .5;
+                        }
+
+                        .login-card.card:hover::before,
+                        .login-card.card:hover::after {
+                            opacity: .9;
+                        }
+
+                        h2 {
+                            margin-bottom: 1rem;
+                            color: #0A2A43;
+                            font-weight: 800;
+                            font-size: 2.5em;
+                        }
+
+                        .sub {
+                            margin: 0.75rem 0 2rem 0;
+                            color: #445;
+                            opacity: .8;
+                            font-size: 1.05em;
+                        }
+
+                        .divider {
+                            margin: 18px 0;
+                            color: #999;
+                            display: flex;
+                            align-items: center;
+                            gap: 10px;
+                            justify-content: center;
+                        }
+
+                        .divider::before,
+                        .divider::after {
+                            content: '';
+                            height: 1px;
+                            width: 28%;
+                            background: linear-gradient(90deg, transparent, #ddd, transparent);
+                        }
+
+                        .border-top {
+                            border-top: 1px solid #eaeaea;
+                            padding-top: 18px;
+                        }
+
+                        .input-wrap {
+                            position: relative;
+                        }
+
+                        input {
+                            width: 100%;
+                            padding: 18px 24px;
+                            font-size: 1.05em;
+                            border: 2px solid #e5e7eb;
+                            border-radius: 12px;
+                            margin-bottom: 1.5rem;
+                            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+                            box-sizing: border-box;
+                            background: rgba(255, 255, 255, 0.95);
+                        }
+
+                        input:focus {
+                            outline: none;
+                            border-color: #0d9488;
+                            box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.12);
+                            transform: translateY(-1px);
+                        }
+
+                        button {
+                            background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+                            color: white;
+                            border: none;
+                            padding: 16px 32px;
+                            font-size: 1.05em;
+                            border-radius: 12px;
+                            cursor: pointer;
+                            transition: transform 0.15s ease, box-shadow 0.2s ease;
+                            width: 100%;
+                            position: relative;
+                            overflow: hidden;
+                            font-weight: 700;
+                            letter-spacing: 0.5px;
+                            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+                        }
+
+                        button:hover {
+                            transform: translateY(-2px);
+                            box-shadow: 0 10px 24px rgba(13, 148, 136, 0.4);
+                        }
+
+                        button:active {
+                            transform: translateY(0);
+                        }
+
+                        button:disabled {
+                            opacity: .6;
+                            cursor: not-allowed;
+                        }
+
+                        button.linux-do {
+                            background: linear-gradient(135deg, #0ea5e9 0%, #0d9488 100%);
+                            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
+                        }
+
+                        .hint {
+                            color: #6b7280;
+                            font-size: 0.95em;
+                        }
+
+                        /* 入场动画：与首页容器一致 */
+                        .enter-stage {
+                            opacity: 0;
+                            transform: translateY(14px);
+                        }
+
+                        .enter-active {
+                            opacity: 1 !important;
+                            transform: translateY(0) !important;
+                            transition: opacity .6s ease, transform .6s ease;
+                        }
+
+                        /* 预加载阶段：通过 :host-context 禁止 Shadow DOM 内动画/过渡，避免首帧闪烁 */
+                        :host-context(html.preload) * {
+                            animation: none !important;
+                            transition: none !important;
+                        }
+                    </style>
+
+                    <div class="login-card card enter-stage enter-active" data-parallax="layer2">
+                        <h2>欢迎来到致衡</h2>
+                        <div class="sub">请使用 Linux.do 账号登录</div>
+
+                        <button class="linux-do magnetic cta" id="linuxDoBtn">
+                            🐧 使用 Linux.do 登录
+                        </button>
+
+
+                    </div>
+                </template></login-area>
+        </div>
+
+        <!-- 主游戏区域 -->
+        <div id="mainArea" style="display: none;">
+            <!-- 用户信息 -->
+            <user-info id="userInfo" username="junerver"><template shadowrootmode="open">
+                    <style>
+                        :host {
+                            display: block;
+                        }
+
+                        .user-card {
+                            background: linear-gradient(135deg, #115e59 0%, #0d9488 100%);
+                            color: white;
+                            border-radius: 24px;
+                            padding: 2rem;
+                            margin-bottom: 2rem;
+                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            animation: slideIn 0.5s ease-out;
+                        }
+
+                        @keyframes slideIn {
+                            from {
+                                opacity: 0;
+                                transform: translateY(-20px);
+                            }
+
+                            to {
+                                opacity: 1;
+                                transform: translateY(0);
+                            }
+                        }
+
+                        .user-card:hover {
+                            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
+                            transform: translateY(-2px);
+                        }
+
+                        .user-header {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            gap: 15px;
+                        }
+
+                        .user-left {
+                            display: flex;
+                            align-items: center;
+                            gap: 15px;
+                            flex: 1;
+                        }
+
+                        h3 {
+                            margin: 0;
+                            font-size: 1.5em;
+                            font-weight: 700;
+                            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+                        }
+
+                        button {
+                            background: rgba(255, 255, 255, 0.2);
+                            backdrop-filter: blur(10px);
+                            color: white;
+                            border: 1px solid rgba(255, 255, 255, 0.3);
+                            padding: 10px 20px;
+                            font-size: 0.95em;
+                            border-radius: 12px;
+                            cursor: pointer;
+                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                            font-weight: 600;
+                        }
+
+                        button:hover {
+                            background: rgba(255, 255, 255, 0.3);
+                            transform: translateY(-2px);
+                            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+                        }
+
+                        button:active {
+                            transform: translateY(0);
+                        }
+                    </style>
+
+                    <div class="user-card">
+                        <div class="user-header">
+                            <div class="user-left">
+                                <h3>👤 junerver</h3>
+                            </div>
+                            <message-notification id="messageNotification"><template shadowrootmode="open">
+                                    <style>
+                                        :host {
+                                            display: block;
+                                            position: relative;
+                                        }
+
+                                        .notification-bell {
+                                            position: relative;
+                                            cursor: pointer;
+                                            font-size: 28px;
+                                            padding: 10px;
+                                            border-radius: 50%;
+                                            background: rgba(255, 255, 255, 0.15);
+                                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                                        }
+
+                                        .notification-bell:hover {
+                                            background: rgba(255, 255, 255, 0.25);
+                                            transform: scale(1.15);
+                                        }
+
+                                        .badge {
+                                            position: absolute;
+                                            top: 0;
+                                            right: 0;
+                                            background: #ef4444;
+                                            color: white;
+                                            border-radius: 12px;
+                                            padding: 3px 7px;
+                                            font-size: 12px;
+                                            font-weight: 700;
+                                            min-width: 20px;
+                                            text-align: center;
+                                            box-shadow: 0 2px 8px rgba(239, 68, 68, 0.4);
+                                        }
+
+                                        .message-panel {
+                                            position: absolute;
+                                            top: 55px;
+                                            right: 0;
+                                            width: 380px;
+                                            max-height: 520px;
+                                            background: white;
+                                            border-radius: 16px;
+                                            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+                                            overflow: hidden;
+                                            z-index: 1000;
+                                            display: none;
+                                            flex-direction: column;
+                                        }
+
+                                        .panel-header {
+                                            background: linear-gradient(135deg, #115e59 0%, #0d9488 100%);
+                                            color: white;
+                                            padding: 18px 20px;
+                                            display: flex;
+                                            justify-content: space-between;
+                                            align-items: center;
+                                        }
+
+                                        .panel-header h3 {
+                                            margin: 0;
+                                            font-size: 17px;
+                                            font-weight: 700;
+                                        }
+
+                                        .mark-all-btn {
+                                            background: rgba(255, 255, 255, 0.2);
+                                            border: none;
+                                            color: white;
+                                            padding: 6px 12px;
+                                            border-radius: 6px;
+                                            cursor: pointer;
+                                            font-size: 13px;
+                                            font-weight: 600;
+                                            transition: all 0.2s;
+                                        }
+
+                                        .mark-all-btn:hover {
+                                            background: rgba(255, 255, 255, 0.3);
+                                            transform: translateY(-1px);
+                                        }
+
+                                        .message-list {
+                                            overflow-y: auto;
+                                            max-height: 400px;
+                                            flex: 1;
+                                        }
+
+                                        .message-item {
+                                            padding: 16px 20px;
+                                            border-bottom: 1px solid #f0f0f0;
+                                            cursor: pointer;
+                                            transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+                                        }
+
+                                        .message-item:hover {
+                                            background: #f8f9fa;
+                                            transform: translateX(4px);
+                                        }
+
+                                        .message-item.unread {
+                                            background: linear-gradient(135deg, #dbeafe 0%, #e0f2fe 100%);
+                                        }
+
+                                        .message-header {
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 10px;
+                                            margin-bottom: 10px;
+                                        }
+
+                                        .message-icon {
+                                            font-size: 22px;
+                                        }
+
+                                        .message-title {
+                                            flex: 1;
+                                            font-weight: 700;
+                                            font-size: 15px;
+                                            color: #333;
+                                        }
+
+                                        .message-time {
+                                            font-size: 12px;
+                                            color: #999;
+                                            font-weight: 500;
+                                        }
+
+                                        .message-content {
+                                            font-size: 14px;
+                                            color: #666;
+                                            line-height: 1.6;
+                                            word-wrap: break-word;
+                                        }
+
+                                        .unread-dot {
+                                            width: 9px;
+                                            height: 9px;
+                                            background: #ef4444;
+                                            border-radius: 50%;
+                                            box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+                                        }
+
+                                        .empty-message {
+                                            padding: 60px 20px;
+                                            text-align: center;
+                                            color: #999;
+                                            font-size: 15px;
+                                        }
+                                    </style>
+
+                                    <div class="notification-bell" id="bellBtn">
+                                        🔔
+
+                                    </div>
+
+                                    <div class="message-panel">
+                                        <div class="panel-header">
+                                            <h3>📬 消息通知</h3>
+
+                                        </div>
+                                        <div class="message-list">
+                                            <div class="empty-message">暂无消息</div>
+                                        </div>
+                                    </div>
+                                </template></message-notification>
+                            <button id="logoutBtn">登出</button>
+                        </div>
+                    </div>
+                </template></user-info>
+
+            <!-- 排名概览 -->
+            <ranking-overview id="rankingOverview"><template shadowrootmode="open">
+                    <style>
+                        :host {
+                            display: block;
+                        }
+
+                        .ranking-card {
+                            background: white;
+                            border-radius: 24px;
+                            padding: 2rem;
+                            margin-bottom: 2rem;
+                            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+                            position: relative;
+                            overflow: hidden;
+                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                        }
+
+                        .ranking-card:hover {
+                            transform: translateY(-4px);
+                            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                        }
+
+                        /* 分层光效 */
+                        .ranking-card::before,
+                        .ranking-card::after {
+                            content: '';
+                            position: absolute;
+                            left: -20%;
+                            width: 140%;
+                            height: 140px;
+                            pointer-events: none;
+                            transition: opacity .3s ease;
+                        }
+
+                        .ranking-card::before {
+                            top: -70px;
+                            background: radial-gradient(140px 50px at 20% 100%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0));
+                            opacity: .7;
+                        }
+
+                        .ranking-card::after {
+                            bottom: -70px;
+                            background: radial-gradient(200px 70px at 80% 0%, rgba(13, 148, 136, 0.15), rgba(45, 212, 191, 0));
+                            opacity: .6;
+                        }
+
+                        .ranking-card:hover::before,
+                        .ranking-card:hover::after {
+                            opacity: 1;
+                        }
+
+                        h2 {
+                            color: #333;
+                            margin-bottom: 1.5rem;
+                            font-size: 1.8em;
+                            font-weight: 700;
+                        }
+
+                        .radar-chart {
+                            margin-top: 1.5rem;
+                            display: grid;
+                            gap: 1rem;
+                        }
+
+                        /* 移动端: 单栏 */
+                        @media (max-width: 767px) {
+                            .radar-chart {
+                                grid-template-columns: 1fr;
+                            }
+                        }
+
+                        /* 平板/中等屏幕: 2栏 */
+                        @media (min-width: 768px) and (max-width: 1199px) {
+                            .radar-chart {
+                                grid-template-columns: repeat(2, 1fr);
+                            }
+                        }
+
+                        /* 宽屏: 3栏 */
+                        @media (min-width: 1200px) {
+                            .radar-chart {
+                                grid-template-columns: repeat(3, 1fr);
+                            }
+
+                            /* 最后两项占满下一行 */
+                            .stat-item:nth-child(4) {
+                                grid-column: 1 / 3;
+                            }
+
+                            .stat-item:nth-child(5) {
+                                grid-column: 3 / 4;
+                            }
+                        }
+
+                        .stat-item {
+                            display: flex;
+                            justify-content: space-between;
+                            align-items: center;
+                            padding: 18px 24px;
+                            margin: 0;
+                            background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+                            border-radius: 12px;
+                            font-size: 1.15em;
+                            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+                            transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+                        }
+
+                        .stat-item:hover {
+                            transform: translateX(5px);
+                            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+                        }
+
+                        .stat-item.highlight {
+                            background: linear-gradient(135deg, #FFF4E6 0%, #FFE8CC 100%);
+                            font-weight: 700;
+                            border: 2px solid #FFD699;
+                        }
+
+                        .stat-item.coin-reward {
+                            background: linear-gradient(135deg, #D4F4DD 0%, #B8E6C3 100%);
+                            font-weight: 700;
+                            color: #0D5C2E;
+                            border: 2px solid #A0D9B0;
+                        }
+
+                        .stat-label {
+                            color: #666;
+                            font-weight: 500;
+                        }
+
+                        .stat-value {
+                            color: #333;
+                            font-weight: 700;
+                            font-size: 1.15em;
+                        }
+                    </style>
+
+                    <div class="ranking-card">
+                        <h2>📊 认知域评估</h2>
+                        <div class="radar-chart">
+                            <div class="stat-item">
+                                <span class="stat-label">P类(知觉域):</span>
+                                <span class="stat-value" id="vBestVal">97.8%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">M类(记忆域):</span>
+                                <span class="stat-value" id="aBestVal">98.4%</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">S类(语义域):</span>
+                                <span class="stat-value" id="kBestVal">99.4%</span>
+                            </div>
+                            <div class="stat-item highlight">
+                                <span class="stat-label">认知域最小值:</span>
+                                <span class="stat-value"><span id="weakSense">P</span> <span
+                                        id="weakPct">97.8%</span></span>
+                            </div>
+                            <div class="stat-item coin-reward">
+                                <span class="stat-label">💰 预计奖励:</span>
+                                <span class="stat-value" id="coinsVal">29.33 额度</span>
+                            </div>
+                        </div>
+                    </div>
+                </template></ranking-overview>
+
+            <!-- 游戏列表 -->
+            <game-list id="gameList"><template shadowrootmode="open">
+                    <style>
+                        :host {
+                            display: block;
+                        }
+
+                        h2 {
+                            color: white;
+                            margin-bottom: 3rem;
+                            text-align: center;
+                            font-size: 3em;
+                            font-weight: 800;
+                            text-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+                            letter-spacing: 1px;
+                        }
+
+                        .category {
+                            margin-bottom: 3rem;
+                        }
+
+                        .category h3 {
+                            color: white;
+                            margin-bottom: 2rem;
+                            padding: 18px 24px;
+                            border-left: 5px solid white;
+                            font-size: 1.5em;
+                            font-weight: 700;
+                            background: rgba(255, 255, 255, 0.15);
+                            backdrop-filter: blur(10px);
+                            border-radius: 12px;
+                        }
+
+                        .grid {
+                            display: grid;
+                            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+                            gap: 2rem;
+                        }
+                    </style>
+
+                    <h2>🎮 游戏列表</h2>
+
+                    <div class="category">
+                        <h3>P类 - 知觉域游戏</h3>
+                        <div class="grid">
+                            <game-card game-id="v1_color" title="🎨 颜色校准" description="匹配目标颜色，考验视觉精确度"
+                                status="✓ 今日已完成 排名:97.8%"><template shadowrootmode="open">
+                                    <style>
+                                        :host {
+                                            display: block;
+                                        }
+
+                                        .card {
+                                            background: rgba(255, 255, 255, 0.95);
+                                            backdrop-filter: blur(10px);
+                                            -webkit-backdrop-filter: blur(10px);
+                                            border: 1px solid rgba(255, 255, 255, 0.3);
+                                            border-radius: 24px;
+                                            padding: 2rem;
+                                            cursor: pointer;
+                                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                                            height: 100%;
+                                            min-height: 180px;
+                                            box-sizing: border-box;
+                                            position: relative;
+                                            overflow: hidden;
+                                        }
+
+                                        .card::before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 0;
+                                            left: -100%;
+                                            width: 100%;
+                                            height: 100%;
+                                            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                                            transition: left 0.5s;
+                                        }
+
+                                        .card:hover::before {
+                                            left: 100%;
+                                        }
+
+                                        .card:hover {
+                                            transform: translateY(-8px) scale(1.02);
+                                            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                                            border-color: #2dd4bf;
+                                        }
+
+                                        h4 {
+                                            color: #333;
+                                            margin: 0 0 0.75rem 0;
+                                            font-size: 1.5em;
+                                            font-weight: 700;
+                                            line-height: 1.3;
+                                        }
+
+                                        p {
+                                            color: #666;
+                                            font-size: 1em;
+                                            margin: 0 0 1rem 0;
+                                            line-height: 1.7;
+                                        }
+
+                                        .status-container {
+                                            display: flex;
+                                            gap: 8px;
+                                            align-items: center;
+                                            flex-wrap: wrap;
+                                        }
+
+                                        .status {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: #e5e7eb;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            color: #666;
+                                            font-weight: 600;
+                                            transition: all 0.3s;
+                                        }
+
+                                        .status.played {
+                                            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                                            color: white;
+                                            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                                        }
+
+                                        .ranking {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+                                            color: white;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            font-weight: 700;
+                                            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+                                        }
+                                    </style>
+
+                                    <div class="card">
+                                        <h4>🎨 颜色校准</h4>
+                                        <p>匹配目标颜色，考验视觉精确度</p>
+                                        <div class="status-container">
+                                            <span class="status played">✓ 今日已完成 排名:97.8%</span>
+
+                                        </div>
+                                    </div>
+                                </template></game-card><game-card game-id="v2_diff" title="🔍 选出不同色"
+                                description="在方格中找出不同的颜色" status="✓ 今日已完成 排名:91.6%"><template shadowrootmode="open">
+                                    <style>
+                                        :host {
+                                            display: block;
+                                        }
+
+                                        .card {
+                                            background: rgba(255, 255, 255, 0.95);
+                                            backdrop-filter: blur(10px);
+                                            -webkit-backdrop-filter: blur(10px);
+                                            border: 1px solid rgba(255, 255, 255, 0.3);
+                                            border-radius: 24px;
+                                            padding: 2rem;
+                                            cursor: pointer;
+                                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                                            height: 100%;
+                                            min-height: 180px;
+                                            box-sizing: border-box;
+                                            position: relative;
+                                            overflow: hidden;
+                                        }
+
+                                        .card::before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 0;
+                                            left: -100%;
+                                            width: 100%;
+                                            height: 100%;
+                                            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                                            transition: left 0.5s;
+                                        }
+
+                                        .card:hover::before {
+                                            left: 100%;
+                                        }
+
+                                        .card:hover {
+                                            transform: translateY(-8px) scale(1.02);
+                                            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                                            border-color: #2dd4bf;
+                                        }
+
+                                        h4 {
+                                            color: #333;
+                                            margin: 0 0 0.75rem 0;
+                                            font-size: 1.5em;
+                                            font-weight: 700;
+                                            line-height: 1.3;
+                                        }
+
+                                        p {
+                                            color: #666;
+                                            font-size: 1em;
+                                            margin: 0 0 1rem 0;
+                                            line-height: 1.7;
+                                        }
+
+                                        .status-container {
+                                            display: flex;
+                                            gap: 8px;
+                                            align-items: center;
+                                            flex-wrap: wrap;
+                                        }
+
+                                        .status {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: #e5e7eb;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            color: #666;
+                                            font-weight: 600;
+                                            transition: all 0.3s;
+                                        }
+
+                                        .status.played {
+                                            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                                            color: white;
+                                            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                                        }
+
+                                        .ranking {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+                                            color: white;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            font-weight: 700;
+                                            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+                                        }
+                                    </style>
+
+                                    <div class="card">
+                                        <h4>🔍 选出不同色</h4>
+                                        <p>在方格中找出不同的颜色</p>
+                                        <div class="status-container">
+                                            <span class="status played">✓ 今日已完成 排名:91.6%</span>
+
+                                        </div>
+                                    </div>
+                                </template></game-card>
+                        </div>
+                    </div>
+
+                    <div class="category">
+                        <h3>M类 - 记忆域游戏</h3>
+                        <div class="grid">
+                            <game-card game-id="a1_memory" title="🔢 数字记忆" description="记住并输入数字序列"
+                                status="✓ 今日已完成 排名:95.4%"><template shadowrootmode="open">
+                                    <style>
+                                        :host {
+                                            display: block;
+                                        }
+
+                                        .card {
+                                            background: rgba(255, 255, 255, 0.95);
+                                            backdrop-filter: blur(10px);
+                                            -webkit-backdrop-filter: blur(10px);
+                                            border: 1px solid rgba(255, 255, 255, 0.3);
+                                            border-radius: 24px;
+                                            padding: 2rem;
+                                            cursor: pointer;
+                                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                                            height: 100%;
+                                            min-height: 180px;
+                                            box-sizing: border-box;
+                                            position: relative;
+                                            overflow: hidden;
+                                        }
+
+                                        .card::before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 0;
+                                            left: -100%;
+                                            width: 100%;
+                                            height: 100%;
+                                            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                                            transition: left 0.5s;
+                                        }
+
+                                        .card:hover::before {
+                                            left: 100%;
+                                        }
+
+                                        .card:hover {
+                                            transform: translateY(-8px) scale(1.02);
+                                            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                                            border-color: #2dd4bf;
+                                        }
+
+                                        h4 {
+                                            color: #333;
+                                            margin: 0 0 0.75rem 0;
+                                            font-size: 1.5em;
+                                            font-weight: 700;
+                                            line-height: 1.3;
+                                        }
+
+                                        p {
+                                            color: #666;
+                                            font-size: 1em;
+                                            margin: 0 0 1rem 0;
+                                            line-height: 1.7;
+                                        }
+
+                                        .status-container {
+                                            display: flex;
+                                            gap: 8px;
+                                            align-items: center;
+                                            flex-wrap: wrap;
+                                        }
+
+                                        .status {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: #e5e7eb;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            color: #666;
+                                            font-weight: 600;
+                                            transition: all 0.3s;
+                                        }
+
+                                        .status.played {
+                                            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                                            color: white;
+                                            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                                        }
+
+                                        .ranking {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+                                            color: white;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            font-weight: 700;
+                                            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+                                        }
+                                    </style>
+
+                                    <div class="card">
+                                        <h4>🔢 数字记忆</h4>
+                                        <p>记住并输入数字序列</p>
+                                        <div class="status-container">
+                                            <span class="status played">✓ 今日已完成 排名:95.4%</span>
+
+                                        </div>
+                                    </div>
+                                </template></game-card><game-card game-id="a2_sequence" title="⚡ 01序列"
+                                description="快速输入滚动的01序列" status="✓ 今日已完成 排名:98.4%"><template shadowrootmode="open">
+                                    <style>
+                                        :host {
+                                            display: block;
+                                        }
+
+                                        .card {
+                                            background: rgba(255, 255, 255, 0.95);
+                                            backdrop-filter: blur(10px);
+                                            -webkit-backdrop-filter: blur(10px);
+                                            border: 1px solid rgba(255, 255, 255, 0.3);
+                                            border-radius: 24px;
+                                            padding: 2rem;
+                                            cursor: pointer;
+                                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                                            height: 100%;
+                                            min-height: 180px;
+                                            box-sizing: border-box;
+                                            position: relative;
+                                            overflow: hidden;
+                                        }
+
+                                        .card::before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 0;
+                                            left: -100%;
+                                            width: 100%;
+                                            height: 100%;
+                                            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                                            transition: left 0.5s;
+                                        }
+
+                                        .card:hover::before {
+                                            left: 100%;
+                                        }
+
+                                        .card:hover {
+                                            transform: translateY(-8px) scale(1.02);
+                                            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                                            border-color: #2dd4bf;
+                                        }
+
+                                        h4 {
+                                            color: #333;
+                                            margin: 0 0 0.75rem 0;
+                                            font-size: 1.5em;
+                                            font-weight: 700;
+                                            line-height: 1.3;
+                                        }
+
+                                        p {
+                                            color: #666;
+                                            font-size: 1em;
+                                            margin: 0 0 1rem 0;
+                                            line-height: 1.7;
+                                        }
+
+                                        .status-container {
+                                            display: flex;
+                                            gap: 8px;
+                                            align-items: center;
+                                            flex-wrap: wrap;
+                                        }
+
+                                        .status {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: #e5e7eb;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            color: #666;
+                                            font-weight: 600;
+                                            transition: all 0.3s;
+                                        }
+
+                                        .status.played {
+                                            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                                            color: white;
+                                            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                                        }
+
+                                        .ranking {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+                                            color: white;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            font-weight: 700;
+                                            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+                                        }
+                                    </style>
+
+                                    <div class="card">
+                                        <h4>⚡ 01序列</h4>
+                                        <p>快速输入滚动的01序列</p>
+                                        <div class="status-container">
+                                            <span class="status played">✓ 今日已完成 排名:98.4%</span>
+
+                                        </div>
+                                    </div>
+                                </template></game-card>
+                        </div>
+                    </div>
+
+                    <div class="category">
+                        <h3>S类 - 语义域游戏</h3>
+                        <div class="grid">
+                            <game-card game-id="k1_find65" title="🎯 找65" description="从4个选项中识别真正的65风格发言"
+                                status="✓ 今日已完成 排名:99.4%"><template shadowrootmode="open">
+                                    <style>
+                                        :host {
+                                            display: block;
+                                        }
+
+                                        .card {
+                                            background: rgba(255, 255, 255, 0.95);
+                                            backdrop-filter: blur(10px);
+                                            -webkit-backdrop-filter: blur(10px);
+                                            border: 1px solid rgba(255, 255, 255, 0.3);
+                                            border-radius: 24px;
+                                            padding: 2rem;
+                                            cursor: pointer;
+                                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                                            height: 100%;
+                                            min-height: 180px;
+                                            box-sizing: border-box;
+                                            position: relative;
+                                            overflow: hidden;
+                                        }
+
+                                        .card::before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 0;
+                                            left: -100%;
+                                            width: 100%;
+                                            height: 100%;
+                                            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                                            transition: left 0.5s;
+                                        }
+
+                                        .card:hover::before {
+                                            left: 100%;
+                                        }
+
+                                        .card:hover {
+                                            transform: translateY(-8px) scale(1.02);
+                                            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                                            border-color: #2dd4bf;
+                                        }
+
+                                        h4 {
+                                            color: #333;
+                                            margin: 0 0 0.75rem 0;
+                                            font-size: 1.5em;
+                                            font-weight: 700;
+                                            line-height: 1.3;
+                                        }
+
+                                        p {
+                                            color: #666;
+                                            font-size: 1em;
+                                            margin: 0 0 1rem 0;
+                                            line-height: 1.7;
+                                        }
+
+                                        .status-container {
+                                            display: flex;
+                                            gap: 8px;
+                                            align-items: center;
+                                            flex-wrap: wrap;
+                                        }
+
+                                        .status {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: #e5e7eb;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            color: #666;
+                                            font-weight: 600;
+                                            transition: all 0.3s;
+                                        }
+
+                                        .status.played {
+                                            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                                            color: white;
+                                            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                                        }
+
+                                        .ranking {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+                                            color: white;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            font-weight: 700;
+                                            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+                                        }
+                                    </style>
+
+                                    <div class="card">
+                                        <h4>🎯 找65</h4>
+                                        <p>从4个选项中识别真正的65风格发言</p>
+                                        <div class="status-container">
+                                            <span class="status played">✓ 今日已完成 排名:99.4%</span>
+
+                                        </div>
+                                    </div>
+                                </template></game-card><game-card game-id="k2_positive" title="😊 正面嘛"
+                                description="识别阴阳怪气的负面话语" status="✓ 今日已完成 排名:96.0%"><template shadowrootmode="open">
+                                    <style>
+                                        :host {
+                                            display: block;
+                                        }
+
+                                        .card {
+                                            background: rgba(255, 255, 255, 0.95);
+                                            backdrop-filter: blur(10px);
+                                            -webkit-backdrop-filter: blur(10px);
+                                            border: 1px solid rgba(255, 255, 255, 0.3);
+                                            border-radius: 24px;
+                                            padding: 2rem;
+                                            cursor: pointer;
+                                            transition: all 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                                            height: 100%;
+                                            min-height: 180px;
+                                            box-sizing: border-box;
+                                            position: relative;
+                                            overflow: hidden;
+                                        }
+
+                                        .card::before {
+                                            content: '';
+                                            position: absolute;
+                                            top: 0;
+                                            left: -100%;
+                                            width: 100%;
+                                            height: 100%;
+                                            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                                            transition: left 0.5s;
+                                        }
+
+                                        .card:hover::before {
+                                            left: 100%;
+                                        }
+
+                                        .card:hover {
+                                            transform: translateY(-8px) scale(1.02);
+                                            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+                                            border-color: #2dd4bf;
+                                        }
+
+                                        h4 {
+                                            color: #333;
+                                            margin: 0 0 0.75rem 0;
+                                            font-size: 1.5em;
+                                            font-weight: 700;
+                                            line-height: 1.3;
+                                        }
+
+                                        p {
+                                            color: #666;
+                                            font-size: 1em;
+                                            margin: 0 0 1rem 0;
+                                            line-height: 1.7;
+                                        }
+
+                                        .status-container {
+                                            display: flex;
+                                            gap: 8px;
+                                            align-items: center;
+                                            flex-wrap: wrap;
+                                        }
+
+                                        .status {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: #e5e7eb;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            color: #666;
+                                            font-weight: 600;
+                                            transition: all 0.3s;
+                                        }
+
+                                        .status.played {
+                                            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+                                            color: white;
+                                            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+                                        }
+
+                                        .ranking {
+                                            display: inline-block;
+                                            padding: 8px 16px;
+                                            background: linear-gradient(135deg, #0d9488 0%, #2dd4bf 100%);
+                                            color: white;
+                                            border-radius: 9999px;
+                                            font-size: 0.9em;
+                                            font-weight: 700;
+                                            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.3);
+                                        }
+                                    </style>
+
+                                    <div class="card">
+                                        <h4>😊 正面嘛</h4>
+                                        <p>识别阴阳怪气的负面话语</p>
+                                        <div class="status-container">
+                                            <span class="status played">✓ 今日已完成 排名:96.0%</span>
+
+                                        </div>
+                                    </div>
+                                </template></game-card>
+                        </div>
+                    </div>
+                </template></game-list>
+
+            <!-- 兑换码领取区域 -->
+            <div class="card redemption-section" data-parallax="layer2"
+                style="transform: translate3d(-1.13405px, -19.807px, 0px); transform-style: preserve-3d; will-change: transform; transition: transform 120ms; position: relative;">
+                <h3>🎁 今日兑换码</h3>
+                <div id="redemptionDisplay" style="display: block;">
+                    <div class="code-display" id="codeDisplay">174D2321409E4059A6E766CC82A18150</div>
+                    <button class="copy-btn magnetic" onclick="copyCode()" style="transform: translate(0px, 0px);">📋
+                        复制兑换码</button>
+                    <p class="claimed-hint">✓ 今日已领取</p>
+                </div>
+                <div id="redemptionClaim" style="display: none;">
+                    <button id="claimButton" class="magnetic" onclick="claimRedemption()" disabled=""
+                        style="transform: translate(0px, 0px);">
+                        领取兑换码
+                    </button>
+                    <p class="hint">完成全部6个游戏后可领取</p>
+                </div>
+                <div class="tilt-glow"></div>
+            </div>
+        </div>
+
+        <!-- 游戏详情页 -->
+        <div id="gameDetailArea" style="display: none;">
+            <button class="back-button magnetic" onclick="backToMain()" style="transform: translate(0px, 0px);">←
+                返回主页</button>
+            <div id="gameDetailContent">
+                <div class="game-detail-header">
+                    <h2>🔍 选出不同色</h2>
+                    <div class="game-category">P - 知觉域</div>
+                </div>
+
+                <div class="game-detail-container">
+                    <div class="game-detail-left">
+                        <button class="play-button" onclick="playGame()">🎮 开始游戏</button>
+
+                        <div class="game-section ranking-card">
+                            <h3>🏆 本次游戏排名</h3>
+                            <p class="section-hint">基于你最后一次游玩的成绩</p>
+                            <div id="currentRanking">加载中...</div>
+                        </div>
+
+                        <div class="game-section">
+                            <h3>📖 游戏介绍</h3>
+                            <p>在9×9方格中找出颜色不同的方块</p>
+                        </div>
+
+                        <div class="game-section">
+                            <h3>📋 游戏规则</h3>
+                            <ul>
+                                <li>共5轮游戏</li>
+                                <li>每轮显示81个方块</li>
+                                <li>其中1个颜色略有不同</li>
+                                <li>点击不同色的方块</li>
+                                <li>难度逐轮递增</li>
+                                <li>分数 = Σ[成功(1) / (用时 + 3秒)]</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="game-detail-right">
+                        <div class="game-section leaderboard-card">
+                            <h3>👑 总榜 Top 10</h3>
+                            <p class="section-hint">基于所有玩家的最高分</p>
+                            <div id="leaderboard">加载中...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 游戏玩法页 -->
+        <div id="gamePlayArea" style="display: block;">
+            <button class="back-button magnetic" onclick="backToDetail()" style="transform: translate(0px, 0px);">←
+                返回详情</button>
+            <div id="gamePlayContent" data-game-type="">
+                <div class="game-container">
+                    <div class="result-display">
+                        <h3>🎉 游戏完成！</h3>
+                        <h2>🔍 选出不同色</h2>
+                        <p>成功: 5/5</p>
+                        <p>总分: <span id="v2_diff_score">提交失败</span></p>
+                        <p>排名: <span id="v2_diff_rank">提交失败</span></p>
+                        <div
+                            style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                            <button onclick="backToDetail()">查看详情</button>
+                            <button onclick="backToMain()">返回主页</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 加载 Web Components -->
+    <script src="components/loading-spinner.js"></script>
+    <script src="components/toast-notification.js"></script><toast-notification><template shadowrootmode="open">
+            <style>
+                :host {
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 10000;
+                    pointer-events: none;
+                }
+
+                .toast-container {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    max-width: 400px;
+                }
+
+                .toast {
+                    background: white;
+                    border-radius: 16px;
+                    padding: 18px 24px;
+                    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+                    display: flex;
+                    align-items: center;
+                    gap: 14px;
+                    pointer-events: auto;
+                    animation: slideInRight 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+                    position: relative;
+                    overflow: hidden;
+                    min-width: 320px;
+                    backdrop-filter: blur(10px);
+                }
+
+                .toast::before {
+                    content: '';
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    bottom: 0;
+                    width: 5px;
+                    background: currentColor;
+                }
+
+                .toast.success {
+                    color: #10b981;
+                    border-left: 5px solid #10b981;
+                }
+
+                .toast.error {
+                    color: #ef4444;
+                    border-left: 5px solid #ef4444;
+                }
+
+                .toast.warning {
+                    color: #f59e0b;
+                    border-left: 5px solid #f59e0b;
+                }
+
+                .toast.info {
+                    color: #0d9488;
+                    border-left: 5px solid #0d9488;
+                }
+
+                .toast-icon {
+                    font-size: 26px;
+                    flex-shrink: 0;
+                }
+
+                .toast-content {
+                    flex: 1;
+                    color: #333;
+                }
+
+                .toast-title {
+                    font-weight: 700;
+                    margin-bottom: 5px;
+                    font-size: 16px;
+                }
+
+                .toast-message {
+                    font-size: 14px;
+                    color: #666;
+                    line-height: 1.5;
+                }
+
+                .toast-close {
+                    background: none;
+                    border: none;
+                    font-size: 22px;
+                    cursor: pointer;
+                    color: #999;
+                    padding: 0;
+                    width: 26px;
+                    height: 26px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    border-radius: 6px;
+                    transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1);
+                }
+
+                .toast-close:hover {
+                    background: #f5f5f5;
+                    color: #333;
+                    transform: scale(1.1);
+                }
+
+                @keyframes slideInRight {
+                    from {
+                        opacity: 0;
+                        transform: translateX(100px);
+                    }
+
+                    to {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+                }
+
+                @keyframes slideOutRight {
+                    from {
+                        opacity: 1;
+                        transform: translateX(0);
+                    }
+
+                    to {
+                        opacity: 0;
+                        transform: translateX(100px);
+                    }
+                }
+
+                .toast.removing {
+                    animation: slideOutRight 0.3s ease-out forwards;
+                }
+
+                @media (max-width: 768px) {
+                    :host {
+                        top: 10px;
+                        right: 10px;
+                        left: 10px;
+                    }
+
+                    .toast {
+                        min-width: auto;
+                    }
+                }
+            </style>
+
+            <div class="toast-container"></div>
+        </template></toast-notification>
+    <script src="components/login-area.js"></script>
+    <script src="components/message-notification.js"></script>
+    <script src="components/user-info.js"></script>
+    <script src="components/ranking-overview.js"></script>
+    <script src="components/game-card.js"></script>
+    <script src="components/game-list.js"></script>
+
+    <!-- 加载核心脚本 -->
+    <script src="color-picker.js"></script>
+    <script src="hero-bg.js"></script>
+    <script src="app.js"></script>
+
+    <!-- 加载游戏模块 -->
+    <script src="games/color-calibration.js"></script>
+    <script src="games/diff-color.js"></script>
+    <script src="games/memory.js"></script>
+    <script src="games/sequence.js"></script>
+    <script src="games/find65.js"></script>
+    <script src="games/find65-data.js"></script>
+    <script src="games/positive.js"></script>
+    <script>
+        // 等所有资源完成后再恢复动画/过渡，避免首帧闪烁
+        window.addEventListener('load', function () {
+            try { document.documentElement.classList.remove('preload'); } catch (e) { }
+        });
+    </script>
+
+</body>
+<div style="all: initial;">
+    <div id="__hcfy__" style="all: initial;"><template shadowrootmode="open">
+            <style>
+                #root {
+                    -webkit-text-size-adjust: 100%;
+                    box-sizing: border-box;
+                    font-size: 14px;
+                    font-weight: 400;
+                    letter-spacing: 0;
+                    line-height: 1.28581;
+                    text-transform: none;
+                    color: #182026;
+                    font-family: -apple-system, "BlinkMacSystemFont", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", "Icons16", sans-serif;
+                    touch-action: manipulation
+                }
+
+                #root>.bp5-portal {
+                    z-index: 9999999999
+                }
+            </style>
+            <link rel="stylesheet" href="chrome-extension://ikhdkkncnoglghljlkmcimlnlhkeamad/normalize.css">
+            <link rel="stylesheet" href="chrome-extension://ikhdkkncnoglghljlkmcimlnlhkeamad/blueprint.css">
+            <link rel="stylesheet" href="chrome-extension://ikhdkkncnoglghljlkmcimlnlhkeamad/blueprint-select.css">
+            <link rel="stylesheet" href="chrome-extension://ikhdkkncnoglghljlkmcimlnlhkeamad/cropper.css">
+            <style>
+                #translate-panel {
+                    background-color: #f6f7f9;
+                    display: flex;
+                    flex-direction: column;
+                    padding-bottom: 8px
+                }
+
+                .bp5-dark #translate-panel {
+                    background-color: #1c2127
+                }
+
+                #translate-panel .fixed {
+                    flex-shrink: 0;
+                    margin-bottom: 10px
+                }
+
+                #translate-panel .body {
+                    flex-grow: 1;
+                    overflow: auto;
+                    overscroll-behavior: contain
+                }
+
+                #translate-panel .body::-webkit-scrollbar {
+                    width: 8px;
+                    background-color: rgba(0, 0, 0, 0);
+                    -webkit-border-radius: 100px
+                }
+
+                #translate-panel .body::-webkit-scrollbar:hover {
+                    background-color: rgba(0, 0, 0, .09)
+                }
+
+                #translate-panel .body::-webkit-scrollbar-thumb:vertical {
+                    background: rgba(0, 0, 0, .5);
+                    -webkit-border-radius: 100px
+                }
+
+                #translate-panel .body::-webkit-scrollbar-thumb:vertical:active {
+                    background: rgba(0, 0, 0, .61);
+                    -webkit-border-radius: 100px
+                }
+
+                #translate-panel.size-small,
+                #translate-panel.size-small h6.bp5-heading,
+                #translate-panel.size-small .bp5-control.bp5-large,
+                #translate-panel.size-small textarea.bp5-input.bp5-small {
+                    font-size: 14px
+                }
+
+                #translate-panel.size-small .phonetic-item,
+                #translate-panel.size-small .quick-settings a {
+                    font-size: 12px
+                }
+
+                #translate-panel.size-middle,
+                #translate-panel.size-middle h6.bp5-heading,
+                #translate-panel.size-middle .bp5-control.bp5-large,
+                #translate-panel.size-middle textarea.bp5-input {
+                    font-size: 18px
+                }
+
+                #translate-panel.size-middle .phonetic-item,
+                #translate-panel.size-middle .quick-settings a {
+                    font-size: 14px
+                }
+
+                #translate-panel.size-large,
+                #translate-panel.size-large h6.bp5-heading,
+                #translate-panel.size-large .bp5-control.bp5-large,
+                #translate-panel.size-large textarea.bp5-input.bp5-large {
+                    font-size: 22px
+                }
+
+                #translate-panel.size-large .source,
+                #translate-panel.size-large .phonetic-item,
+                #translate-panel.size-large .quick-settings a {
+                    font-size: 18px
+                }
+
+                #translate-panel .bp5-button.bp5-small,
+                #translate-panel .bp5-small .bp5-button {
+                    min-height: 20px;
+                    min-width: 20px
+                }
+
+                #translate-panel .header {
+                    display: flex;
+                    align-items: center;
+                    padding: 4px 6px 4px 10px;
+                    border-bottom: 1px solid #d1d1d1
+                }
+
+                .bp5-dark #translate-panel .header {
+                    border-bottom-color: rgba(17, 20, 24, .4)
+                }
+
+                #translate-panel .header .drag-block {
+                    min-width: 5px;
+                    flex-shrink: 0;
+                    flex-grow: 1;
+                    align-self: stretch
+                }
+
+                #translate-panel .header .left {
+                    flex-shrink: 0;
+                    display: flex
+                }
+
+                #translate-panel .header .right {
+                    flex-shrink: 0;
+                    display: flex;
+                    align-items: center
+                }
+
+                #translate-panel .header .right .bp5-icon-arrow-right {
+                    flex-shrink: 0;
+                    margin: 0 5px
+                }
+
+                #translate-panel .header .right>.bp5-button {
+                    flex-shrink: 0;
+                    margin: 0 1px
+                }
+
+                #translate-panel .header .right>.bp5-button:last-child {
+                    margin-right: 0
+                }
+
+                #translate-panel .quick-settings {
+                    padding: 4px 9px;
+                    margin: 0 1px
+                }
+
+                #translate-panel .quick-settings>div {
+                    margin-bottom: 5px
+                }
+
+                #translate-panel .quick-settings .bp5-control {
+                    margin-bottom: 0
+                }
+
+                #translate-panel .query-text {
+                    position: relative;
+                    padding: 10px 10px 2px 10px
+                }
+
+                #translate-panel .query-text textarea.bp5-input {
+                    min-height: 44px;
+                    font-family: system-ui, -apple-system, "Segoe UI", "Roboto", "Ubuntu", "Cantarell", "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+                    overscroll-behavior: contain
+                }
+
+                #translate-panel .query-text .translate-btn {
+                    position: absolute;
+                    opacity: .6
+                }
+
+                #translate-panel .query-text .translate-btn:hover {
+                    opacity: 1
+                }
+
+                #translate-panel .body {
+                    padding: 0 10px
+                }
+
+                #translate-panel .body .bp5-card:first-child {
+                    margin-top: 1px
+                }
+
+                #translate-panel .body .bp5-card:last-child {
+                    margin-bottom: 1px
+                }
+
+                #translate-panel .body .no-api {
+                    margin: 20px 0
+                }
+
+                .result-block {
+                    margin: 8px 0;
+                    padding: 2px 5px
+                }
+
+                .result-block .bp5-button {
+                    visibility: hidden
+                }
+
+                .result-block .error .bp5-button,
+                .result-block:hover .bp5-button {
+                    visibility: visible
+                }
+
+                .result-block .legend {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between
+                }
+
+                .result-block .legend .legend-left {
+                    display: flex;
+                    align-items: center
+                }
+
+                .result-block .legend .api-ico,
+                .result-block .legend .bp5-heading {
+                    flex-shrink: 0;
+                    white-space: nowrap
+                }
+
+                .result-block .legend .api-ico {
+                    display: inline-block;
+                    width: 14px;
+                    height: 14px;
+                    background-size: contain;
+                    margin-right: 3px
+                }
+
+                .result-block .legend .bp5-heading {
+                    margin-bottom: 0;
+                    margin-right: 10px
+                }
+
+                .result-block .legend .source {
+                    cursor: pointer;
+                    font-size: 12px;
+                    display: inline-flex;
+                    align-items: center
+                }
+
+                .result-block .legend .source .source-text {
+                    overflow: hidden
+                }
+
+                .result-block .legend .source .bp5-icon {
+                    position: relative;
+                    top: -1px;
+                    margin-left: 1px
+                }
+
+                .result-block .phonetic {
+                    display: flex;
+                    flex-wrap: wrap
+                }
+
+                .result-block .phonetic .phonetic-item {
+                    display: flex;
+                    align-items: center;
+                    font-size: 12px
+                }
+
+                .result-block .phonetic .phonetic-item:not(:last-child) {
+                    margin-right: 12px
+                }
+
+                .result-block .common-result p {
+                    line-height: 1.3;
+                    margin: 2px 0;
+                    overflow-wrap: break-word
+                }
+
+                .result-block .common-result .dict a {
+                    text-decoration: underline
+                }
+
+                .result-block .error {
+                    font-size: 12px;
+                    padding: 5px 10px
+                }
+
+                .result-block .dict-pos {
+                    margin-right: 5px
+                }
+
+                .external-translators {
+                    margin-bottom: 3px;
+                    padding: 0;
+                    display: flex;
+                    flex-wrap: wrap
+                }
+
+                .external-translators>div {
+                    margin: 0 5px 5px 0
+                }
+
+                .quick-links a {
+                    margin: 0 5px 5px 0
+                }
+
+                #popper-container {
+                    width: 250px;
+                    max-width: 100%;
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    z-index: 9999999998;
+                    touch-action: none;
+                    transition: opacity .2s;
+                    background-color: #f6f7f9
+                }
+
+                .bp5-dark #popper-container {
+                    background-color: #1c2127
+                }
+
+                #popper-container.show {
+                    opacity: 1;
+                    pointer-events: auto;
+                    user-select: auto
+                }
+
+                #popper-container,
+                #popper-container[data-popper-reference-hidden=true] {
+                    opacity: 0;
+                    pointer-events: none;
+                    user-select: none
+                }
+
+                #popper-container .drag-block {
+                    cursor: grab
+                }
+
+                #popper-container.pin {
+                    position: fixed
+                }
+
+                #popper-container.pin .arrow {
+                    display: none
+                }
+
+                #popper-container .arrow,
+                #popper-container .arrow::before {
+                    position: absolute;
+                    width: 8px;
+                    height: 8px;
+                    z-index: -1
+                }
+
+                #popper-container .arrow::before {
+                    content: "";
+                    transform: rotate(45deg);
+                    background: #f6f7f9
+                }
+
+                .bp5-dark #popper-container .arrow::before {
+                    background-color: #1c2127
+                }
+
+                #popper-container .arrow {
+                    display: none
+                }
+
+                #popper-container.show[data-popper-placement]:not([data-popper-reference-hidden=true]) .arrow {
+                    display: block
+                }
+
+                #popper-container[data-popper-placement^=top] .arrow {
+                    bottom: -5px
+                }
+
+                #popper-container[data-popper-placement^=top] .arrow::before {
+                    border-right: 1px solid #d1d1d1;
+                    border-bottom: 1px solid #d1d1d1
+                }
+
+                #popper-container[data-popper-placement^=bottom] .arrow {
+                    top: -5px
+                }
+
+                #popper-container[data-popper-placement^=bottom] .arrow::before {
+                    border-left: 1px solid #d1d1d1;
+                    border-top: 1px solid #d1d1d1
+                }
+
+                #popper-container[data-popper-placement^=left] .arrow {
+                    right: -5px
+                }
+
+                #popper-container[data-popper-placement^=left] .arrow::before {
+                    border-right: 1px solid #d1d1d1;
+                    border-top: 1px solid #d1d1d1
+                }
+
+                #popper-container[data-popper-placement^=right] .arrow {
+                    left: -5px
+                }
+
+                #popper-container[data-popper-placement^=right] .arrow::before {
+                    border-left: 1px solid #d1d1d1;
+                    border-bottom: 1px solid #d1d1d1
+                }
+
+                #translate-btn {
+                    display: none;
+                    position: absolute;
+                    z-index: 9999999999;
+                    left: 0;
+                    top: 0
+                }
+
+                #translate-btn .bp5-button {
+                    padding: 2px;
+                    min-width: 0;
+                    min-height: 0
+                }
+
+                #translate-btn .btn-icon {
+                    width: 18px;
+                    height: 18px;
+                    background-image: url(chrome-extension://ikhdkkncnoglghljlkmcimlnlhkeamad/logo.png);
+                    background-size: contain
+                }
+
+                .bp5-dark #translate-btn .btn-icon {
+                    background-image: url(chrome-extension://ikhdkkncnoglghljlkmcimlnlhkeamad/logowhite36.png)
+                }
+
+                #translate-btn.show {
+                    display: block
+                }
+
+                .translate-type-selector .bp5-label {
+                    display: inline
+                }
+
+                .translate-type-selector .bp5-radio {
+                    margin-bottom: 0
+                }
+
+                #ocr-container {
+                    position: fixed;
+                    z-index: 99999999999999;
+                    left: 0;
+                    top: 0;
+                    right: 0;
+                    bottom: 0
+                }
+
+                #ocr-container .toolbar {
+                    display: none;
+                    position: absolute;
+                    z-index: 1
+                }
+
+                #ocr-container img {
+                    max-width: 100%
+                }
+
+                #app {
+                    cursor: default
+                }
+
+                .switch-pin {
+                    flex-shrink: 0;
+                    cursor: pointer
+                }
+
+                .switch-pin .bp5-icon-pin {
+                    transition: transform .2s, color .2s;
+                    transform: rotate(-45deg)
+                }
+
+                .pin .switch-pin .bp5-icon-pin {
+                    transform: rotate(-70deg)
+                }
+
+                .cut-btn {
+                    margin-left: 2px
+                }
+
+                .app-toaster-container {
+                    position: fixed !important;
+                    z-index: 9999999999 !important
+                }
+
+                .app-toaster-container .bp5-toast {
+                    min-width: auto
+                }
+
+                #web-trs-panel .app-toaster-container {
+                    padding-right: 0;
+                    padding-left: 0
+                }
+
+                #web-trs-panel .page-trs-form-group {
+                    margin: 0 0 0 0;
+                    align-items: center
+                }
+
+                #web-trs-panel .page-trs-form-group>label {
+                    width: 70px
+                }
+            </style>
+            <div id="root" dir="ltr" class="bp5-dark">
+                <div id="app" class="bp5-dark">
+                    <div id="translate-btn"><button type="button" class="bp5-button"><span
+                                class="btn-icon"></span></button></div>
+                    <div id="popper-container" class="bp5-elevation-4"
+                        style="width: 577px; transform: translate(0px, 0px);">
+                        <div id="translate-panel" class="size-small">
+                            <div class="fixed">
+                                <div class="header">
+                                    <div class="left">
+                                        <div class="switch-pin"><button type="button"
+                                                class="bp5-button bp5-minimal bp5-small"><span aria-hidden="true"
+                                                    class="bp5-icon bp5-icon-pin"><svg data-icon="pin" height="14"
+                                                        role="img" viewBox="0 0 16 16" width="14">
+                                                        <path
+                                                            d="M9.41.92c-.51.51-.41 1.5.15 2.56L4.34 7.54C2.8 6.48 1.45 6.05.92 6.58l3.54 3.54-3.54 4.95 4.95-3.54 3.54 3.54c.53-.53.1-1.88-.96-3.42l4.06-5.22c1.06.56 2.04.66 2.55.15L9.41.92z"
+                                                            fill-rule="evenodd"></path>
+                                                    </svg></span></button></div><button type="button" title="图片翻译"
+                                            class="bp5-button bp5-minimal bp5-small"><span aria-hidden="true"
+                                                class="bp5-icon bp5-icon-media"><svg data-icon="media" height="14"
+                                                    role="img" viewBox="0 0 16 16" width="14">
+                                                    <path
+                                                        d="M11.99 6.99c.55 0 1-.45 1-1s-.45-1-1-1-1 .45-1 1 .45 1 1 1zm3-5h-14c-.55 0-1 .45-1 1v10c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-10c0-.55-.45-1-1-1zm-1 9l-5-3-1 2-3-4-3 5v-7h12v7z"
+                                                        fill-rule="evenodd"></path>
+                                                </svg></span></button><button type="button" title="语音翻译"
+                                            class="bp5-button bp5-minimal bp5-small"><span class="bp5-icon"><svg
+                                                    version="1.1" id="Capa_1" width="14" height="14"
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                                                    viewBox="0 0 490.9 490.9" xml:space="preserve">
+                                                    <g>
+                                                        <g>
+                                                            <path
+                                                                d="M245.5,322.9c53,0,96.2-43.2,96.2-96.2V96.2c0-53-43.2-96.2-96.2-96.2s-96.2,43.2-96.2,96.2v130.5 C149.3,279.8,192.5,322.9,245.5,322.9z M173.8,96.2c0-39.5,32.2-71.7,71.7-71.7s71.7,32.2,71.7,71.7v130.5 c0,39.5-32.2,71.7-71.7,71.7s-71.7-32.2-71.7-71.7V96.2z">
+                                                            </path>
+                                                            <path
+                                                                d="M94.4,214.5c-6.8,0-12.3,5.5-12.3,12.3c0,85.9,66.7,156.6,151.1,162.8v76.7h-63.9c-6.8,0-12.3,5.5-12.3,12.3 s5.5,12.3,12.3,12.3h152.3c6.8,0,12.3-5.5,12.3-12.3s-5.5-12.3-12.3-12.3h-63.9v-76.7c84.4-6.3,151.1-76.9,151.1-162.8 c0-6.8-5.5-12.3-12.3-12.3s-12.3,5.5-12.3,12.3c0,76.6-62.3,138.9-138.9,138.9s-138.9-62.3-138.9-138.9 C106.6,220,101.2,214.5,94.4,214.5z">
+                                                            </path>
+                                                        </g>
+                                                    </g>
+                                                </svg></span></button>
+                                    </div>
+                                    <div class="drag-block" title="按住不放可以拖动"></div>
+                                    <div class="right"><button type="button" disabled="" title="添加到收藏夹" tabindex="-1"
+                                            class="bp5-button bp5-disabled bp5-minimal bp5-small"><span
+                                                aria-hidden="true" class="bp5-icon bp5-icon-star-empty"><svg
+                                                    data-icon="star-empty" height="14" role="img" viewBox="0 0 16 16"
+                                                    width="14">
+                                                    <path
+                                                        d="M16 6.11l-5.53-.84L8 0 5.53 5.27 0 6.11l4 4.1L3.06 16 8 13.27 12.94 16 12 10.21l4-4.1zM4.91 13.2l.59-3.62L3 7.02l3.45-.53L8 3.2l1.55 3.29 3.45.53-2.5 2.56.59 3.62L8 11.49 4.91 13.2z"
+                                                        fill-rule="evenodd"></path>
+                                                </svg></span></button><button type="button"
+                                            class="bp5-button bp5-minimal bp5-small settings" title="快捷设置"><span
+                                                aria-hidden="true" class="bp5-icon bp5-icon-cog"><svg data-icon="cog"
+                                                    height="14" role="img" viewBox="0 0 16 16" width="14">
+                                                    <path
+                                                        d="M15.19 6.39h-1.85c-.11-.37-.27-.71-.45-1.04l1.36-1.36c.31-.31.31-.82 0-1.13l-1.13-1.13a.803.803 0 00-1.13 0l-1.36 1.36c-.33-.17-.67-.33-1.04-.44V.79c0-.44-.36-.8-.8-.8h-1.6c-.44 0-.8.36-.8.8v1.86c-.39.12-.75.28-1.1.47l-1.3-1.3c-.3-.3-.79-.3-1.09 0L1.82 2.91c-.3.3-.3.79 0 1.09l1.3 1.3c-.2.34-.36.7-.48 1.09H.79c-.44 0-.8.36-.8.8v1.6c0 .44.36.8.8.8h1.85c.11.37.27.71.45 1.04l-1.36 1.36c-.31.31-.31.82 0 1.13l1.13 1.13c.31.31.82.31 1.13 0l1.36-1.36c.33.18.67.33 1.04.44v1.86c0 .44.36.8.8.8h1.6c.44 0 .8-.36.8-.8v-1.86c.39-.12.75-.28 1.1-.47l1.3 1.3c.3.3.79.3 1.09 0l1.09-1.09c.3-.3.3-.79 0-1.09l-1.3-1.3c.19-.35.36-.71.48-1.1h1.85c.44 0 .8-.36.8-.8v-1.6a.816.816 0 00-.81-.79zm-7.2 4.6c-1.66 0-3-1.34-3-3s1.34-3 3-3 3 1.34 3 3-1.34 3-3 3z"
+                                                        fill-rule="evenodd"></path>
+                                                </svg></span></button><button type="button" title="关闭(Esc)"
+                                            class="bp5-button bp5-minimal bp5-small"><span aria-hidden="true"
+                                                class="bp5-icon bp5-icon-cross"><svg data-icon="cross" height="18"
+                                                    role="img" viewBox="0 0 16 16" width="18">
+                                                    <path
+                                                        d="M9.41 8l3.29-3.29c.19-.18.3-.43.3-.71a1.003 1.003 0 00-1.71-.71L8 6.59l-3.29-3.3a1.003 1.003 0 00-1.42 1.42L6.59 8 3.3 11.29c-.19.18-.3.43-.3.71a1.003 1.003 0 001.71.71L8 9.41l3.29 3.29c.18.19.43.3.71.3a1.003 1.003 0 00.71-1.71L9.41 8z"
+                                                        fill-rule="evenodd"></path>
+                                                </svg></span></button></div>
+                                </div>
+                                <div class="bp5-collapse">
+                                    <div class="bp5-collapse-body" aria-hidden="true">
+                                        <div class="quick-settings bp5-card bp5-elevation-0">
+                                            <div><span aria-controls="listbox-0" class="lang-select bp5-popover-target"
+                                                    aria-expanded="false" aria-haspopup="listbox"
+                                                    role="combobox"><button type="button"
+                                                        class="bp5-button bp5-small"><span
+                                                            class="bp5-button-text">自动检测</span><span aria-hidden="true"
+                                                            class="bp5-icon bp5-icon-caret-down"><svg
+                                                                data-icon="caret-down" height="16" role="img"
+                                                                viewBox="0 0 16 16" width="16">
+                                                                <path
+                                                                    d="M12 6.5c0-.28-.22-.5-.5-.5h-7a.495.495 0 00-.37.83l3.5 4c.09.1.22.17.37.17s.28-.07.37-.17l3.5-4c.08-.09.13-.2.13-.33z"
+                                                                    fill-rule="evenodd"></path>
+                                                            </svg></span></button></span><span aria-hidden="true"
+                                                    class="bp5-icon bp5-icon-arrow-right" style="margin: 0px 10px;"><svg
+                                                        data-icon="arrow-right" height="12" role="img"
+                                                        viewBox="0 0 16 16" width="12">
+                                                        <path
+                                                            d="M14.7 7.29l-5-5a.965.965 0 00-.71-.3 1.003 1.003 0 00-.71 1.71l3.29 3.29H1.99c-.55 0-1 .45-1 1s.45 1 1 1h9.59l-3.29 3.29a1.003 1.003 0 001.42 1.42l5-5c.18-.18.29-.43.29-.71s-.12-.52-.3-.7z"
+                                                            fill-rule="evenodd"></path>
+                                                    </svg></span><span aria-controls="listbox-1"
+                                                    class="lang-select bp5-popover-target" aria-expanded="false"
+                                                    aria-haspopup="listbox" role="combobox"><button type="button"
+                                                        class="bp5-button bp5-small"><span
+                                                            class="bp5-button-text">中文(简体)</span><span
+                                                            aria-hidden="true" class="bp5-icon bp5-icon-caret-down"><svg
+                                                                data-icon="caret-down" height="16" role="img"
+                                                                viewBox="0 0 16 16" width="16">
+                                                                <path
+                                                                    d="M12 6.5c0-.28-.22-.5-.5-.5h-7a.495.495 0 00-.37.83l3.5 4c.09.1.22.17.37.17s.28-.07.37-.17l3.5-4c.08-.09.13-.2.13-.33z"
+                                                                    fill-rule="evenodd"></path>
+                                                            </svg></span></button></span></div>
+                                            <div><label class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox" checked=""><span
+                                                        class="bp5-control-indicator"></span>谷歌</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input type="checkbox"
+                                                        checked=""><span
+                                                        class="bp5-control-indicator"></span>DeepL(内置)</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>DeepL</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>ChatGPT</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>Claude</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>Gemini</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>Grok</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>硅基</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>混元</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>文心</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>文心（旧）</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>智谱</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>豆包</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>通义</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>DeepSeek</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>零一</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>MiniMax</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>百川</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>Kimi</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>百度</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>百度(专业版)</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>腾讯</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>彩云</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>阿里</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>阿里(专业版)</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>有道</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>火山</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input type="checkbox"
+                                                        checked=""><span
+                                                        class="bp5-control-indicator"></span>必应词典</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>搜狗</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input type="checkbox"
+                                                        checked=""><span
+                                                        class="bp5-control-indicator"></span>Yandex</label>
+                                                <div style="margin-top: 4px;"><a
+                                                        class="bp5-text-small">购买套餐包后可直接使用以上所有服务</a></div>
+                                            </div>
+                                            <div><label class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>自动朗读</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>自动复制</label></div>
+                                            <div role="radiogroup" class="bp5-radio-group"><label
+                                                    class="bp5-control bp5-radio bp5-inline"><input
+                                                        name="Blueprint5.RadioGroup-0" type="radio" value="small"
+                                                        checked=""><span
+                                                        class="bp5-control-indicator"></span>小</label><label
+                                                    class="bp5-control bp5-radio bp5-inline"><input
+                                                        name="Blueprint5.RadioGroup-0" type="radio" value="middle"><span
+                                                        class="bp5-control-indicator"></span>中</label><label
+                                                    class="bp5-control bp5-radio bp5-inline"><input
+                                                        name="Blueprint5.RadioGroup-0" type="radio" value="large"><span
+                                                        class="bp5-control-indicator"></span>大</label></div>
+                                            <div><label class="bp5-control bp5-checkbox bp5-inline"><input
+                                                        type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>显示文本框</label><label
+                                                    class="bp5-control bp5-checkbox bp5-inline"
+                                                    style="margin-right: 0px;"><input type="checkbox"><span
+                                                        class="bp5-control-indicator"></span>鼠标悬浮取词</label></div><a
+                                                class="bp5-text-small">打开完整设置</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="body">
+                                <p>请输入需要翻译的文本。</p>
+                            </div>
+                        </div>
+                        <div class="arrow"></div>
+                    </div>
+                    <div id="web-trs-panel"></div>
+                </div>
+            </div>
+        </template></div>
+</div>
+
+</html>

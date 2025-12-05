@@ -22,6 +22,21 @@
     // ========== 工具函数 ==========
 
     /**
+     * 检测是否在01序列游戏页面
+     * @returns {boolean}
+     */
+    function isSequenceGame() {
+        // 检查游戏内容区域
+        const gameContent = document.querySelector('[data-game-type="a2_sequence"]');
+        if (gameContent) return true;
+
+        // 备选：检查标题和进度元素
+        const h2 = document.querySelector('h2');
+        const seqProgress = document.getElementById('seqProgress');
+        return h2 && h2.textContent.includes('01序列') && seqProgress;
+    }
+
+    /**
      * 模拟键盘按键事件
      * @param {string} key - 按键值 ('0' 或 '1')
      */
@@ -71,6 +86,11 @@
      * 执行一次作弊输入
      */
     function cheatStep() {
+        // 检查是否在序列游戏页面
+        if (!isSequenceGame()) {
+            return;
+        }
+
         // 检查游戏是否已结束
         if (isGameEnded()) {
             stopCheat();
@@ -151,9 +171,27 @@
     console.log('[作弊] 使用 sequenceCheat.start() 启动');
     console.log('[作弊] 使用 sequenceCheat.stop() 停止');
 
-    // 延迟自动启动，等待游戏初始化
-    setTimeout(() => {
-        startCheat();
-    }, 500);
+    // 监听页面变化，在进入序列游戏时自动启动
+    function checkAndStart() {
+        if (isSequenceGame() && !cheatInterval) {
+            console.log('[作弊] 检测到序列游戏页面，自动启动');
+            startCheat();
+        }
+    }
+
+    // 使用 MutationObserver 监听页面变化
+    const observer = new MutationObserver(() => {
+        checkAndStart();
+    });
+
+    if (document.body) {
+        observer.observe(document.body, {
+            childList: true,
+            subtree: true
+        });
+    }
+
+    // 延迟检查一次
+    setTimeout(checkAndStart, 500);
 
 })();
