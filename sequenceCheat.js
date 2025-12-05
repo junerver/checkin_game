@@ -13,7 +13,7 @@
 
     // ========== 配置 ==========
     const MAX_COUNT = 1000;      // 目标正确数，达到后主动结束游戏
-    const INPUT_INTERVAL = 230;  // 输入间隔(ms)，避免过快
+    const INPUT_INTERVAL = 100;  // 输入间隔(ms)，避免过快
 
     // ========== 状态 ==========
     let cheatInterval = null;
