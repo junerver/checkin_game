@@ -38,6 +38,9 @@
     const GAME_TIMEOUT = 120000;              // 单个游戏最大超时时间（2分钟）
     const RESULT_CHECK_INTERVAL = 500;        // 检测游戏结束的间隔
 
+    // 功能开关
+    const AUTO_CLAIM_REDEMPTION = false;      // 是否自动领取兑换码（true=自动领取，false=不自动领取）
+
     // ========== 状态 ==========
     let isRunning = false;
     let currentGameIndex = 0;
@@ -444,10 +447,14 @@
             }
 
             log('全部游戏完成！');
-            updateButtonStatus('领取兑换码...');
 
-            // 领取兑换码
-            await claimAndCopyRedemptionCode();
+            // 根据开关决定是否自动领取兑换码
+            if (AUTO_CLAIM_REDEMPTION) {
+                updateButtonStatus('领取兑换码...');
+                await claimAndCopyRedemptionCode();
+            } else {
+                log('自动领取兑换码已关闭，请手动领取');
+            }
 
             updateButtonStatus('完成!');
 
