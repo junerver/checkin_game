@@ -12,9 +12,9 @@
     'use strict';
 
     // 配置
-    const MIN_DELAY = 800;  // 点击前最小延时 1.5秒
-    const MAX_DELAY = 800;  // 点击前最大延时 3秒
-    const COOLDOWN = 800;   // 点击后冷却时间 3秒
+    const MIN_DELAY = 300;  // 点击前最小延时 1.5秒
+    const MAX_DELAY = 300;  // 点击前最大延时 3秒
+    const COOLDOWN = 300;   // 点击后冷却时间 3秒
 
     // 状态追踪
     let lastClickedRound = 0;   // 上次点击的轮次

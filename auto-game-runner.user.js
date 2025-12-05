@@ -215,6 +215,147 @@
         }
     }
 
+    // ========== 兑换码领取 ==========
+
+    // 检查是否需要领取兑换码
+    function needsToClaimRedemption() {
+        const claimArea = document.getElementById('redemptionClaim');
+        if (!claimArea) return false;
+        const display = claimArea.style.display || window.getComputedStyle(claimArea).display;
+        return display !== 'none';
+    }
+
+    // 检查兑换码是否已显示
+    function isRedemptionDisplayed() {
+        const displayArea = document.getElementById('redemptionDisplay');
+        if (!displayArea) return false;
+        const display = displayArea.style.display || window.getComputedStyle(displayArea).display;
+        return display !== 'none';
+    }
+
+    // 获取兑换码
+    function getRedemptionCode() {
+        const codeEl = document.getElementById('codeDisplay');
+        return codeEl ? codeEl.textContent.trim() : null;
+    }
+
+    // 复制文本到剪贴板
+    async function copyToClipboard(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+            log(`兑换码已复制到剪贴板: ${text}`);
+            return true;
+        } catch (e) {
+            log(`剪贴板复制失败: ${e.message}`);
+            // 备选方案：尝试调用页面的 copyCode 函数
+            if (typeof window.copyCode === 'function') {
+                window.copyCode();
+                log('调用 copyCode() 复制');
+                return true;
+            }
+            return false;
+        }
+    }
+
+    // 领取并复制兑换码
+    async function claimAndCopyRedemptionCode() {
+        // 确保在主页
+        if (!isOnMainPage()) {
+            log('返回主页以领取兑换码');
+            goBackToMain();
+            await delay(1000);
+        }
+
+        // 滚动到页面底部确保兑换码区域可见
+        const redemptionSection = document.querySelector('.redemption-section');
+        if (redemptionSection) {
+            redemptionSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            await delay(500);
+        }
+
+        // 检查是否需要领取
+        if (needsToClaimRedemption()) {
+            log('点击领取兑换码按钮');
+
+            // 方案1：调用全局函数
+            if (typeof window.claimRedemption === 'function') {
+                window.claimRedemption();
+                log('调用 claimRedemption()');
+            } else {
+                // 方案2：点击按钮
+                const claimBtn = document.getElementById('claimButton');
+                if (claimBtn) {
+                    claimBtn.click();
+                    log('点击 claimButton');
+                }
+            }
+
+            // 等待兑换码显示
+            await delay(2000);
+        }
+
+        // 检查兑换码是否显示
+        if (isRedemptionDisplayed()) {
+            const code = getRedemptionCode();
+            if (code) {
+                log(`兑换码: ${code}`);
+                await copyToClipboard(code);
+
+                // 显示提示
+                showCodeNotification(code);
+            } else {
+                log('未能获取兑换码内容');
+            }
+        } else {
+            log('兑换码未显示，可能需要先完成所有游戏');
+        }
+    }
+
+    // 显示兑换码通知
+    function showCodeNotification(code) {
+        // 创建通知元素
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 24px 32px;
+            border-radius: 16px;
+            z-index: 99999;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            font-family: system-ui, -apple-system, sans-serif;
+            animation: fadeIn 0.3s ease;
+        `;
+        notification.innerHTML = `
+            <div style="font-size: 24px; margin-bottom: 12px;">✅ 兑换码已复制!</div>
+            <div style="font-size: 18px; font-family: monospace; background: rgba(0,0,0,0.2); padding: 12px 16px; border-radius: 8px; margin-bottom: 12px;">${code}</div>
+            <div style="font-size: 14px; opacity: 0.9;">已自动复制到剪贴板</div>
+        `;
+
+        // 添加动画样式
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+                to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        document.body.appendChild(notification);
+
+        // 5秒后自动消失
+        setTimeout(() => {
+            notification.style.opacity = '0';
+            notification.style.transition = 'opacity 0.3s ease';
+            setTimeout(() => notification.remove(), 300);
+        }, 5000);
+    }
+
     // ========== 核心流程 ==========
 
     async function runSingleGame(gameId) {
@@ -303,11 +444,16 @@
             }
 
             log('全部游戏完成！');
+            updateButtonStatus('领取兑换码...');
+
+            // 领取兑换码
+            await claimAndCopyRedemptionCode();
+
             updateButtonStatus('完成!');
 
             // 3秒后恢复按钮文字
             await delay(3000);
-            updateButtonStatus('一键打卡');
+            updateButtonStatus('🎮 一键打卡');
 
         } catch (e) {
             log(`流程出错: ${e.message}`);
