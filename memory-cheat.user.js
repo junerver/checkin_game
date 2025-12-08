@@ -13,7 +13,7 @@
     'use strict';
 
     // 配置
-    const AUTO_END_AT_DIGIT = 20;      // 在第20位数时自动结束游戏
+    const AUTO_END_AT_DIGIT = 10;      // 在第20位数时自动结束游戏
     const MIN_TYPE_DELAY = 50;         // 单个按键最小间隔 (ms)
     const MAX_TYPE_DELAY = 150;        // 单个按键最大间隔 (ms)
     const MIN_SUBMIT_DELAY = 100;      // 输入完成后到按回车的最小延时

@@ -33,10 +33,10 @@
 
     // 延时配置（毫秒）
     const DELAY_BEFORE_START_GAME = 1500;     // 进入详情页后等待时间
-    const DELAY_AFTER_GAME_END = 2000;        // 游戏结束后等待时间
+    const DELAY_AFTER_GAME_END = 5000;        // 游戏结束后等待时间
     const DELAY_BEFORE_NEXT_GAME = 1500;      // 返回主页后等待时间
     const GAME_TIMEOUT = 120000;              // 单个游戏最大超时时间（2分钟）
-    const RESULT_CHECK_INTERVAL = 500;        // 检测游戏结束的间隔
+    const RESULT_CHECK_INTERVAL = 1500;        // 检测游戏结束的间隔
 
     // 功能开关
     const AUTO_CLAIM_REDEMPTION = false;      // 是否自动领取兑换码（true=自动领取，false=不自动领取）

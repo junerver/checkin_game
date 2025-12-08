@@ -13,7 +13,7 @@
     'use strict';
 
     // 配置
-    const AUTO_SUBMIT_DELAY = 1500;  // 自动提交延时（毫秒）
+    const AUTO_SUBMIT_DELAY = 500;  // 自动提交延时（毫秒）
 
     // 状态追踪
     let lastProcessedRound = 0;
@@ -99,7 +99,7 @@
         if (typeof window.CustomColorPicker === 'function' && window.CustomColorPicker.prototype) {
             originalGetColor = window.CustomColorPicker.prototype.getColor;
 
-            window.CustomColorPicker.prototype.getColor = function() {
+            window.CustomColorPicker.prototype.getColor = function () {
                 // 检查是否在颜色校准游戏中
                 if (isColorCalibrationGame()) {
                     const targetHex = getTargetColor();
@@ -196,10 +196,10 @@
         Object.defineProperty(window, 'CustomColorPicker', {
             configurable: true,
             enumerable: true,
-            get: function() {
+            get: function () {
                 return this._CustomColorPicker;
             },
-            set: function(value) {
+            set: function (value) {
                 console.log('[颜色校准作弊] 检测到 CustomColorPicker 类定义');
                 this._CustomColorPicker = value;
 
