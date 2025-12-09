@@ -39,7 +39,7 @@
     const RESULT_CHECK_INTERVAL = 1500;        // 检测游戏结束的间隔
 
     // 功能开关
-    const AUTO_CLAIM_REDEMPTION = false;      // 是否自动领取兑换码（true=自动领取，false=不自动领取）
+    const AUTO_CLAIM_REDEMPTION = true;      // 是否自动领取兑换码（true=自动领取，false=不自动领取）
 
     // ========== 状态 ==========
     let isRunning = false;
